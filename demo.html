@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>峡江成子洲中学</title> - 首页</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+
+        body {
+            background-color: #bdedff;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* 容器样式 */
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 导航菜单样式 */
+        .nav-wrapper {
+            height: 50px;
+            background-color: #bdedff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-menu {
+            width: 1000px;
+            height: 50px;
+            display: flex;
+            background-color: #bdedff;
+        }
+
+        .logo {
+            width: 142px;
+            height: 50px;
+            background-image: url("https://img0.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=200&h=100");
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #551A9A;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: #d70a30;
+            color: #ffffff;
+        }
+
+        /* 轮播图样式 */
+        .carousel {
+            width: 1000px;
+            height: 450px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: 3000px;
+            height: 450px;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            width: 1000px;
+            height: 450px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 通用模块样式 */
+        .module {
+            width: 1000px;
+            background-color: #ffffff;
+            margin: 0 auto 30px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .module-title {
+            color: #0077ff;
+            font-weight: 700;
+            font-size: 24px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #cccccc;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .module-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 2px;
+            background-color: #0077ff;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .more-btn {
+            color: #0077ff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 现任领导模块 */
+        .leader-item {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .leader-img {
+            width: 200px;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .leader-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-info {
+            flex: 1;
+        }
+
+        .leader-name {
+            font-size: 24px;
+            color: #0077ff;
+            margin-bottom: 15px;
+            cursor: pointer;
+            /* 文字流光渐变效果 */
+            background: linear-gradient(90deg, #0077ff, #551A9A, #e3e3e4);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .leader-desc-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .leader-desc-content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* 学校新闻模块 */
+        .news-list {
+            margin-bottom: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed #cccccc;
+            cursor: pointer;
+        }
+
+        .news-title {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .news-time {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .page-btn {
+            padding: 5px 15px;
+            background-color: #0077ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .page-num {
+            padding: 5px 10px;
+        }
+
+        /* 学科介绍模块 */
+        .subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .subject-item {
+            flex: 1;
+            min-width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .subject-item:hover {
+            background-color: #0077ff;
+            color: #ffffff;
+        }
+
+        /* 校园风光模块 */
+        .scenery-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .scenery-item {
+            width: 260px;
+            cursor: pointer;
+        }
+
+        .scenery-img {
+            width: 260px;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .scenery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .scenery-item:hover .scenery-img img {
+            transform: scale(1.1);
+        }
+
+        .scenery-title {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .scenery-item:hover .scenery-title {
+            color: #0077ff;
+        }
+
+        /* 底部样式 */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #5da8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            right: 50px;
+            bottom: 60px;
+            width: 100px;
+            height: 40px;
+            background-color: #0077ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        /* 校园风光页面样式 */
+        #scenery-page {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .scenery-detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .scenery-detail-item {
+            display: flex;
+            gap: 20px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .scenery-detail-img {
+            width: 192px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .scenery-detail-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .scenery-detail-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .scenery-detail-item:hover {
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        /* 学校新闻页面样式 */
+        #news-page {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .news-detail {
+            display: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .news-detail-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .news-detail-time {
+            margin: 10px 0;
+            color: #999;
+        }
+
+        .news-detail-content {
+            text-align: left;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .news-detail-imgs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .news-detail-img {
+            width: 196px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .news-detail-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 评价我们页面样式 */
+        #comment-page {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .comment-container {
+            display: flex;
+            gap: 40px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .comment-form {
+            width: 500px;
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .required {
+            color: red;
+            margin-left: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-btn {
+            padding: 10px 20px;
+            background-color: #0077ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .comment-list {
+            width: 660px;
+        }
+
+        .comment-list-title {
+            color: #0077ff;
+            font-weight: 700;
+            font-size: 24px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0077ff;
+            margin-bottom: 20px;
+        }
+
+        .comments {
+            height: 510px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+
+        .comment-item {
+            padding: 15px 0;
+            border-bottom: 1px dashed #cccccc;
+        }
+
+        .comment-name {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .comment-content {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 其他页面通用样式 */
+        .page {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 新闻详情样式 */
+        .news-detail-wrapper {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航菜单 -->
+    <div class="nav-wrapper">
+        <div class="nav-menu">
+            <div class="logo" onclick="showPage('home')"></div>
+            <div class="nav-item active" onclick="showPage('home')">首页</div>
+            <div class="nav-item" onclick="showPage('scenery')">校园风光</div>
+            <div class="nav-item" onclick="showPage('news')">学校新闻</div>
+            <div class="nav-item" onclick="showPage('comment')">评价我们</div>
+            <div class="nav-item" onclick="showPage('cooperation')">合作交流</div>
+            <div class="nav-item" onclick="showPage('subject')">学科介绍</div>
+            <div class="nav-item" onclick="showPage('recruit')">招生就业</div>
+        </div>
+    </div>
+
+    <!-- 主内容容器 -->
+    <div class="container">
+        <!-- 首页内容 -->
+        <div id="home-page" class="page active">
+            <!-- 轮播图 -->
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel-inner">
+                    <div class="carousel-item">
+                        <img src=https://img95.699pic.com/photo/60035/3011.jpg_wh860.jpg alt="校园风光1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://img95.699pic.com/photo/60005/5437.jpg_wh860.jpg" alt="校园风光2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.fdb817cf7736eaf618fcc62336b9d366?rik=3PDdYmZXC7Fx6Q&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10102%2f587%2fw1367h820%2f20190720%2fe74e-iaantfh5221913.jpg&ehk=jBv445t5BXKBxZqn2xuFZgB1tN4gdvtqiwgJ5rUBE8k%3d&risl=&pid=ImgRaw&r=0" alt="校园风光3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 现任领导模块 -->
+            <div class="module">
+                <div class="module-title">现任领导</div>
+                <div class="leader-item">
+                    <div class="leader-img">
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.311df51d33686e462395e0ba1dfd7542?rik=18tWZurQrSS7nw&riu=http%3a%2f%2fpic.baike.soso.com%2fp%2f20110319%2f20110319011527-770683819.jpg&ehk=WLyLBZKo2HGVVwLFJkkTUN1uSqnWSYNFvk65GoS8Lr0%3d&risl=&pid=ImgRaw&r=0" alt="校长">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-name">校长：陈浩南</div>
+                        <div class="leader-desc-title">校长简介：</div>
+                        <div class="leader-desc-content">
+                            他拥有教育学野鸡学位，从事黑社会，游走江湖20余年，具有丰富的学校管理经验和先进的教育理念。曾获得国家级教育管理先进个人称号，致力于推动学校高质量发展，培养德智体美劳全面发展的优秀人才。
+                        </div>
+                    </div>
+                </div>
+                <div class="leader-item">
+                    <div class="leader-img">
+                        <img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.Q-6Lz0NfJ04JpWvjAPVmdgAAAA?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="副校长">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-name">副校长：发国赌神</div>
+                        <div class="leader-desc-title">副校长简介：</div>
+                        <div class="leader-desc-content">
+                            副校长分管教学工作，拥有赌神学位，高级赌神职称。曾在澳门新普京赌博15年，讲过最有含义的一段话 给我擦皮鞋，我要验牌，主持多项省级教学改革课题，发表教育教学论文30余篇，为提升学校教学质量做出了重要贡献。
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学校新闻模块 -->
+            <div class="module">
+                <div class="module-title">学校新闻</div>
+                <div class="header-row">
+                    <div>最新动态</div>
+                    <div class="more-btn" onclick="showPage('news')">更多>></div>
+                </div>
+                <div class="news-list" id="news-list">
+                    <!-- 新闻列表会通过JS动态生成 -->
+                </div>
+                <div class="pagination">
+                    <button class="page-btn" id="prev-page">上一页</button>
+                    <div class="page-num" id="page-num">第1页/共2页</div>
+                    <button class="page-btn" id="next-page">下一页</button>
+                </div>
+            </div>
+
+            <!-- 学科介绍和校园风光模块 -->
+            <div class="module">
+                <!-- 学科介绍 -->
+                <div class="module-title">学科介绍</div>
+                <div class="header-row">
+                    <div>核心学科</div>
+                    <div class="more-btn" onclick="showPage('subject')">更多>></div>
+                </div>
+                <div class="subjects">
+                    <div class="subject-item">语文</div>
+                    <div class="subject-item">数学</div>
+                    <div class="subject-item">英语</div>
+                    <div class="subject-item">物理</div>
+                    <div class="subject-item">化学</div>
+                    <div class="subject-item">生物</div>
+                    <div class="subject-item">政治</div>
+                    <div class="subject-item">历史</div>
+                    <div class="subject-item">地理</div>
+                    <div class="subject-item">信息科学</div>
+                </div>
+
+                <!-- 校园风光 -->
+                <div class="module-title" style="margin-top: 30px;">校园风光</div>
+                <div class="header-row">
+                    <div>美丽校园</div>
+                    <div class="more-btn" onclick="showPage('scenery')">更多>></div>
+                </div>
+                <div class="scenery-list">
+                    <div class="scenery-item">
+                        <div class="scenery-img">
+                            <img src="https://img5.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=260&h=160" alt="教学楼">
+                        </div>
+                        <div class="scenery-title">主教学楼</div>
+                    </div>
+                    <div class="scenery-item">
+                        <div class="scenery-img">
+                            <img src="https://img6.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=260&h=160" alt="图书馆">
+                        </div>
+                        <div class="scenery-title">图书馆</div>
+                    </div>
+                    <div class="scenery-item">
+                        <div class="scenery-img">
+                            <img src="https://img7.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=260&h=160" alt="运动场">
+                        </div>
+                        <div class="scenery-title">运动场</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 校园风光页面 -->
+        <div id="scenery-page" class="page">
+            <div class="module-title">校园风光</div>
+            <div class="scenery-detail-list">
+                <div class="scenery-detail-item">
+                    <div class="scenery-detail-img">
+                        <img src="https://img5.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=192&h=120" alt="教学楼">
+                    </div>
+                    <div class="scenery-detail-content">
+                        <p>风光简介:主教学楼建于2005年，总建筑面积15000平方米，拥有现代化的教学设施和智能化的教学管理系统。楼内设有多媒体教室、计算机实验室、语音教室等各类功能教室，为学生提供了优质的学习环境。教学楼设计风格现代简约，融合了绿色环保理念，是学校的标志性建筑之一。</p>
+                    </div>
+                </div>
+                <div class="scenery-detail-item">
+                    <div class="scenery-detail-img">
+                        <img src="https://img6.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=192&h=120" alt="图书馆">
+                    </div>
+                    <div class="scenery-detail-content">
+                        <p>风光简介:学校图书馆建筑面积8000平方米，馆藏图书50万册，电子图书30万册，各类期刊报纸200余种。图书馆采用开放式管理模式，设有阅览区、自习区、电子阅览室等功能区域，为师生提供了安静舒适的阅读和学习环境。图书馆还定期举办读书分享会、文化讲座等活动，营造了浓厚的书香校园氛围。</p>
+                    </div>
+                </div>
+                <div class="scenery-detail-item">
+                    <div class="scenery-detail-img">
+                        <img src="https://img7.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=192&h=120" alt="运动场">
+                    </div>
+                    <div class="scenery-detail-content">
+                        <p>风光简介:学校运动场占地20000平方米，包含标准400米塑胶跑道、天然草坪足球场、篮球场、排球场、羽毛球场等多种运动场地。运动场内设施齐全，可满足体育教学、课余锻炼和各类体育比赛的需求。学校重视学生体质健康，每年举办校运会，培养学生的体育精神和团队协作能力。</p>
+                    </div>
+                </div>
+                <div class="scenery-detail-item">
+                    <div class="scenery-detail-img">
+                        <img src="https://img8.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=192&h=120" alt="校园花园">
+                    </div>
+                    <div class="scenery-detail-content">
+                        <p>风光简介:校园花园位于学校中心区域，占地面积5000平方米，种植了各类花草树木，四季常青，三季有花。花园内设有休闲步道、景观亭、喷泉等景观设施，是师生课余休息、交流的好去处。校园花园不仅美化了校园环境，也为师生提供了亲近自然、放松身心的空间。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学校新闻页面 -->
+        <div id="news-page" class="page">
+            <div class="module-title">学校新闻</div>
+            <!-- 新闻详情 -->
+            <div class="news-detail-wrapper" id="news-detail">
+                <div class="news-detail-title" id="detail-title">新闻标题</div>
+                <div class="news-detail-time" id="detail-time">2024-01-01</div>
+                <div class="news-detail-content" id="detail-content">
+                    新闻详细内容...
+                </div>
+                <div class="news-detail-imgs">
+                    <div class="news-detail-img">
+                        <img src="https://img9.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=196&h=80" alt="新闻图片1">
+                    </div>
+                    <div class="news-detail-img">
+                        <img src="https://img10.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=196&h=80" alt="新闻图片2">
+                    </div>
+                    <div class="news-detail-img">
+                        <img src="https://img11.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=196&h=80" alt="新闻图片3">
+                    </div>
+                    <div class="news-detail-img">
+                        <img src="https://img12.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=196&h=80" alt="新闻图片4">
+                    </div>
+                    <div class="news-detail-img">
+                        <img src="https://img13.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=196&h=80" alt="新闻图片5">
+                    </div>
+                </div>
+            </div>
+            <!-- 新闻列表 -->
+            <div class="module">
+                <div class="news-list" id="all-news-list">
+                    <!-- 完整新闻列表会通过JS动态生成 -->
+                </div>
+                <div class="pagination">
+                    <button class="page-btn" id="all-prev-page">上一页</button>
+                    <div class="page-num" id="all-page-num">第1页/共2页</div>
+                    <button class="page-btn" id="all-next-page">下一页</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评价我们页面 -->
+        <div id="comment-page" class="page">
+            <div class="module-title">评价我们</div>
+            <div class="comment-container">
+                <!-- 评价表单 -->
+                <div class="comment-form">
+                    <div class="form-group">
+                        <label class="form-label">姓名<span class="required">*</span></label>
+                        <input type="text" class="form-input" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">称呼<span class="required">*</span></label>
+                        <select class="form-select" id="title" required>
+                            <option value="">请选择</option>
+                            <option value="1">先生</option>
+                            <option value="2">女士</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">电话<span class="required">*</span></label>
+                        <input type="tel" class="form-input" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">邮箱<span class="required">*</span></label>
+                        <input type="email" class="form-input" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">评价内容<span class="required">*</span></label>
+                        <textarea class="form-textarea" id="content" required></textarea>
+                    </div>
+                    <div class="form-buttons">
+                        <button class="form-btn" id="submit-comment">确定评价</button>
+                        <button class="form-btn" id="reset-comment">重置评价</button>
+                    </div>
+                </div>
+
+                <!-- 全部评价 -->
+                <div class="comment-list">
+                    <div class="comment-list-title">全部评价</div>
+                    <div class="comments" id="comments-container">
+                        <!-- 评价列表会通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他页面（占位） -->
+        <div id="cooperation-page" class="page">
+            <div class="module-title">合作交流</div>
+            <div class="module">
+                <p>合作交流页面正在建设中...</p>
+            </div>
+        </div>
+
+        <div id="subject-page" class="page">
+            <div class="module-title">学科介绍</div>
+            <div class="module">
+                <p>学科介绍页面正在建设中...</p>
+            </div>
+        </div>
+
+        <div id="recruit-page" class="page">
+            <div class="module-title">招生就业</div>
+            <div class="module">
+                <p>直接保送巴邱大学</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        江西橙子在中学
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">返回顶部</button>
+
+    <script>
+        // 模拟新闻数据
+        const newsData = [
+            {
+                id: 1,
+                title: "我校荣获省级文明校园称号",
+                time: "2024-01-15",
+                content: "近日，江西省教育厅公布了2023年度省级文明校园评选结果，我校凭借优良的校风学风、优美的校园环境和突出的办学成果，成功获评省级文明校园称号。这是对我校精神文明建设工作的高度认可，也是全校师生共同努力的结果。学校将以此为契机，继续深化文明校园创建工作，不断提升办学品质和育人水平。"
+            },
+            {
+                id: 2,
+                title: "我校举办2024年春季运动会",
+                time: "2024-01-10",
+                content: "1月10日，我校2024年春季运动会在学校运动场隆重举行。本次运动会设置了田径、球类、趣味运动等多个比赛项目，共有1200余名师生参与。运动会不仅展现了我校师生的体育风采，也增强了师生的集体荣誉感和团队协作精神。校长在开幕式上强调，要坚持德智体美劳五育并举，促进学生全面发展。"
+            },
+            {
+                id: 3,
+                title: "我校与知名企业签订校企合作协议",
+                time: "2024-01-05",
+                content: "为深化产教融合，提升学生实践能力，我校与省内多家知名企业签订了校企合作协议。根据协议，企业将为我校学生提供实习岗位、实训基地和就业机会，学校将为企业培养输送高素质技能人才。此次合作将进一步推动我校应用型人才培养模式改革，提高人才培养质量。"
+            },
+            {
+                id: 4,
+                title: "我校教师在省级教学竞赛中斩获佳绩",
+                time: "2023-12-28",
+                content: "在刚刚结束的江西省中小学教师教学竞赛中，我校选派的5名教师表现优异，分别获得语文、数学、英语、物理、化学学科一等奖1名、二等奖2名、三等奖2名。获奖教师表示，将把竞赛中的收获运用到日常教学中，不断提升教学水平。"
+            },
+            {
+                id: 5,
+                title: "我校开展元旦迎新文艺汇演",
+                time: "2023-12-30",
+                content: "12月30日晚，我校举办了2024年元旦迎新文艺汇演。汇演节目形式多样，包括歌舞、小品、朗诵、乐器演奏等，全部由师生自编自导自演。整场汇演精彩纷呈，充分展现了我校师生的艺术才华和精神风貌，营造了欢乐祥和的节日氛围。"
+            },
+            {
+                id: 6,
+                title: "我校新增3个特色学科专业",
+                time: "2023-12-20",
+                content: "经教育主管部门批准，我校2024年将新增人工智能、大数据应用、跨境电子商务三个特色学科专业。新增专业将紧密对接地方经济发展需求，采用校企合作、项目驱动的教学模式，培养适应社会发展需要的复合型人才。"
+            },
+            {
+                id: 7,
+                title: "我校图书馆新增电子图书10万册",
+                time: "2023-12-15",
+                content: "为满足师生阅读需求，我校图书馆近期新增电子图书10万册，涵盖了教材教辅、文学作品、科普读物、专业著作等多个类别。师生可通过校园网随时随地访问电子图书馆，极大地丰富了教学资源和课外阅读内容。"
+            },
+            {
+                id: 8,
+                title: "我校开展冬季消防安全演练",
+                time: "2023-12-10",
+                content: "为增强师生消防安全意识，提高应急处置能力，我校于12月10日组织全体师生开展了冬季消防安全演练。演练包括消防知识讲座、灭火器使用培训、应急疏散演练等环节，进一步提升了全校师生的消防安全素养和自救互救能力。"
+            },
+            {
+                id: 9,
+                title: "我校学生在省级学科竞赛中取得优异成绩",
+                time: "2023-12-05",
+                content: "在2023年江西省中学生学科竞赛中，我校学生表现出色，共有38名学生获奖，其中一等奖8名、二等奖15名、三等奖15名。获奖学生涵盖数学、物理、化学、生物、信息技术等多个学科，充分展现了我校素质教育的成果。"
+            },
+            {
+                id: 10,
+                title: "我校完成校园智慧化升级改造",
+                time: "2023-12-01",
+                content: "经过两个月的施工，我校校园智慧化升级改造工程近日完工。改造内容包括校园网络升级、智能安防系统建设、智慧教室改造等，实现了校园管理、教学、生活的全面智能化，为师生提供了更加便捷、高效的校园环境。"
+            }
+        ];
+
+        // 模拟评价数据
+        const commentsData = [
+            { name: "王小明", content: "孩子在这所学校就读三年了，整体感觉非常好。老师认真负责，教学水平高，学校的学习氛围也很好。孩子的学习成绩和综合素质都有了很大提升，非常感谢学校和老师们的付出！" },
+            { name: "李小红", content: "学校环境优美，设施齐全，食堂的饭菜也很可口。孩子在这里上学很开心，作为家长我们也很放心。希望学校越办越好！" },
+            { name: "张伟", content: "学校的师资力量雄厚，课外活动丰富，孩子不仅学到了知识，还培养了各种兴趣爱好。学校的管理也很规范，值得推荐！" },
+            { name: "刘芳", content: "作为一名新生家长，对学校的第一印象非常好。入学以来，孩子很快适应了学校生活，变得更加独立和自信。感谢老师们的悉心教导！" },
+            { name: "陈杰", content: "学校的教学理念先进，注重学生的全面发展。孩子在这里不仅学习成绩提高了，人际交往能力也有了很大进步。学校的家校沟通也很顺畅，值得点赞！" },
+            { name: "赵丽", content: "学校的硬件设施一流，图书馆、实验室、运动场都非常完善。孩子每天都很期待上学，这是作为家长最希望看到的。感谢学校为孩子们创造了这么好的学习环境！" }
+        ];
+
+        // 当前页码
+        let currentPage = 1;
+        const pageSize = 5;
+        const totalPages = Math.ceil(newsData.length / pageSize);
+
+        // 轮播图初始化
+        let carouselIndex = 0;
+        const carouselInner = document.getElementById('carousel-inner');
+        const carouselItems = document.querySelectorAll('.carousel-item');
+
+        // 轮播图自动切换
+        function carouselAutoPlay() {
+            carouselIndex = (carouselIndex + 1) % carouselItems.length;
+            carouselInner.style.transform = `translateX(-${carouselIndex * 1000}px)`;
+        }
+
+        let carouselInterval = setInterval(carouselAutoPlay, 3000);
+
+        // 生成新闻列表
+        function renderNewsList(page, containerId) {
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+            const pageNews = newsData.slice(start, end);
+            
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            pageNews.forEach(news => {
+                const newsItem = document.createElement('div');
+                newsItem.className = 'news-item';
+                newsItem.innerHTML = `
+                    <div class="news-title" onclick="showNewsDetail(${news.id})">${news.title}</div>
+                    <div class="news-time">${news.time}</div>
+                `;
+                container.appendChild(newsItem);
+            });
+            
+            // 更新页码显示
+            if (containerId === 'news-list') {
+                document.getElementById('page-num').textContent = `第${page}页/共${totalPages}页`;
+            } else {
+                document.getElementById('all-page-num').textContent = `第${page}页/共${totalPages}页`;
+            }
+        }
+
+        // 显示新闻详情
+        function showNewsDetail(id) {
+            const news = newsData.find(item => item.id === id);
+            if (news) {
+                document.getElementById('detail-title').textContent = news.title;
+                document.getElementById('detail-time').textContent = news.time;
+                document.getElementById('detail-content').textContent = news.content;
+                document.getElementById('news-detail').style.display = 'block';
+                
+                // 滚动到详情
+                document.getElementById('news-detail').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 页码切换
+        document.getElementById('prev-page').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderNewsList(currentPage, 'news-list');
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderNewsList(currentPage, 'news-list');
+            }
+        });
+
+        document.getElementById('all-prev-page').addEventListener('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderNewsList(currentPage, 'all-news-list');
+            }
+        });
+
+        document.getElementById('all-next-page').addEventListener('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderNewsList(currentPage, 'all-news-list');
+            }
+        });
+
+        // 渲染评价列表
+        function renderComments() {
+            const container = document.getElementById('comments-container');
+            container.innerHTML = '';
+            
+            commentsData.forEach(comment => {
+                // 姓名脱敏处理
+                const safeName = comment.name.charAt(0) + '**';
+                
+                const commentItem = document.createElement('div');
+                commentItem.className = 'comment-item';
+                commentItem.innerHTML = `
+                    <div class="comment-name">${safeName}</div>
+                    <div class="comment-content">${comment.content}</div>
+                `;
+                container.appendChild(commentItem);
+            });
+        }
+
+        // 表单提交
+        document.getElementById('submit-comment').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const title = document.getElementById('title').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const content = document.getElementById('content').value;
+            
+            // 表单验证
+            if (!name || !title || !phone || !email || !content) {
+                alert('请填写所有必填字段！');
+                return;
+            }
+            
+            // 添加新评价
+            commentsData.unshift({ name, content });
+            renderComments();
+            
+            // 重置表单
+            document.getElementById('name').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('content').value = '';
+            
+            alert('评价提交成功！');
+        });
+
+        // 重置表单
+        document.getElementById('reset-comment').addEventListener('click', function() {
+            document.getElementById('name').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('content').value = '';
+        });
+
+        // 显示指定页面
+        function showPage(pageId) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
+            });
+            
+            // 激活导航项
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 显示目标页面
+            const targetPage = document.getElementById(`${pageId}-page`);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                
+                // 激活对应导航项
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    if (item.textContent === getPageName(pageId)) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // 特殊处理
+                if (pageId === 'news') {
+                    currentPage = 1;
+                    renderNewsList(1, 'all-news-list');
+                    document.getElementById('news-detail').style.display = 'none';
+                } else if (pageId === 'comment') {
+                    renderComments();
+                }
+                
+                // 滚动到顶部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // 获取页面名称
+        function getPageName(pageId) {
+            const pageNames = {
+                'home': '首页',
+                'scenery': '校园风光',
+                'news': '学校新闻',
+                'comment': '评价我们',
+                'cooperation': '合作交流',
+                'subject': '学科介绍',
+                'recruit': '招生就业'
+            };
+            return pageNames[pageId] || '首页';
+        }
+
+        // 返回顶部
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 监听滚动显示返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // 初始化
+        window.onload = function() {
+            // 渲染首页新闻列表
+            renderNewsList(1, 'news-list');
+            
+            // 渲染评价列表
+            renderComments();
+            
+            // 显示首页
+            showPage('home');
+        };
+    </script>
+</body>
+</html>
